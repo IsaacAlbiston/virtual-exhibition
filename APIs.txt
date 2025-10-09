@@ -1,0 +1,8 @@
+science musuem group 
+collection API
+https://github.com/TheScienceMuseum/collectionsonline/wiki/Collections-Online-API
+/search parameters
+search term string
+date before
+date after
+museum NRM, SMG, NMeM or MSI
