@@ -15,14 +15,14 @@ const HomePage = ()=>{
     },[searchTerm])
 
     return <>
-    <h1>Home Page</h1>
-    <SearchQueryForm setSearchTerm={setSearchTerm}/>
-    {error?<h2>Results Not Found</h2>:
-    <>
-    {isLoading? <h2>Loading...</h2>:
-    <SearchResults artworksInfo={artworksInfo} />}
-    </>
-    }
+        <h1>Home Page</h1>
+        <SearchQueryForm setSearchTerm={setSearchTerm}/>
+        {error?<h2>Results Not Found</h2>:<>
+            {isLoading? <h2>Loading...</h2>:<>
+                {!(Array.isArray(artworksInfo) && artworksInfo.length>0)? <p>No Results</p>:
+                <SearchResults artworksInfo={artworksInfo} />}
+            </>}
+        </>}
     </>
 }
 
