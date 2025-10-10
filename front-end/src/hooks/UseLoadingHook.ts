@@ -8,17 +8,21 @@ const UseLoadingHook = (dataFetchFunction:React.FC<searchParams>, searchTerm:sea
 
     useEffect(()=>{
         setIsLoading(true)
-        dataFetchFunction(searchTerm)
-        .then((responseData)=>{
-            setData(responseData)
-            setIsLoading(false)
-            setError(null)
-            console.log(responseData)
-        })
-        .catch((err)=>{
-            setIsLoading(false)
-            setError(err)
-        })
+        console.log(searchTerm)
+        if (searchTerm.q !== '' && 'q' in searchTerm){
+            dataFetchFunction(searchTerm)
+            .then((responseData)=>{
+                setData(responseData)
+                setIsLoading(false)
+                setError(null)
+                console.log(responseData)
+            })
+            .catch((err)=>{
+                setIsLoading(false)
+                setError(err)
+            })
+        }
+
     },[searchTerm, refreshTerm])
 
     return { data, isLoading, error}
