@@ -3,8 +3,9 @@ import SearchQueryForm from "../components/SearchQueryForm"
 import UseLoadingHook from "../hooks/UseLoadingHook"
 import { searchArtworks } from "../utils/api"
 import SearchResults from "../components/SearchResults"
+import type { HomePageProps } from "../models/PageProps"
 
-const HomePage = ()=>{
+const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
     const [searchTerm, setSearchTerm] = useState("")
     const [artworksSearchTerm, setArtworksSearchTerm] = useState({})
 
