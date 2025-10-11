@@ -1,4 +1,3 @@
-import type { Key } from "react"
 import ArtworkInfoCard from "./ArtworkInfoCard"
 import type { artworksData } from "../models/DataModels"
 import type { SearchResultsProps } from "../models/SearchResults"
