@@ -3,7 +3,7 @@ export interface Exhibition {
     artworks: Artwork[]
 }
 
-interface Artwork{
+export interface Artwork{
     title: string
     imageURL: string
     description: string

@@ -7,7 +7,7 @@ const ExhibitionList: React.FC<ExhibitionListProps> = ({exhibitions})=>{
     <ol>
         {exhibitions.map((exhibition: Exhibition) =>{
             return <li key={exhibition.name} className="listItem" >
-                <ExhibitionInfoCard exhibition={exhibition} />
+                <ExhibitionInfoCard exhibition={exhibition} exhibitionIndex={exhibitions.indexOf(exhibition)} />
             </li>
         })}
     </ol>
