@@ -6,14 +6,16 @@ import SearchResults from "../components/SearchResults"
 import type { HomePageProps } from "../models/PageProps"
 
 const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState('')
     const [artworksSearchTerm, setArtworksSearchTerm] = useState({})
     const [showSearchResults, setShowSearchResults] = useState(false)
 
     const { data:artworksInfo, isLoading, error } = UseLoadingHook(searchArtworks, artworksSearchTerm)
 
     useEffect(()=>{
-        setArtworksSearchTerm({q:searchTerm})
+        if (searchTerm!==''){
+            setArtworksSearchTerm({q:searchTerm})
+        }
     },[searchTerm])
 
     return <>

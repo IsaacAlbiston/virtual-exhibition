@@ -7,7 +7,7 @@ const scienceMuseumGroupApi = axios.create({
 scienceMuseumGroupApi.defaults.headers.common['Accept'] = 'application/json'
 
 export const searchArtworks: React.FC<searchParams> = (givenParams)=>{
-    return scienceMuseumGroupApi.get("/search", {params:{...givenParams}})
+    return scienceMuseumGroupApi.get("/search/objects", {params:{...givenParams}})
     .then(res=>{
         return res.data.data
     })
