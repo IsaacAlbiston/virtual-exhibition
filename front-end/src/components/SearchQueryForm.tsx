@@ -2,11 +2,12 @@ import type { SearchQueryFormProps } from "../models/SearchForm"
 import SearchInput from "./SearchInput"
 import { useState } from "react"
 
-const SearchQueryForm: React.FC<SearchQueryFormProps> = ({setSearchTerm})=>{
+const SearchQueryForm: React.FC<SearchQueryFormProps> = ({setSearchTerm, setShowSearchResults})=>{
     const [inputSearchTerm, setInputSearchTerm] = useState("")
 
     const searchQueryFormSubmit = (event:React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
+        setShowSearchResults(true)
         setSearchTerm(inputSearchTerm)
     }
     return <form onSubmit={searchQueryFormSubmit}>

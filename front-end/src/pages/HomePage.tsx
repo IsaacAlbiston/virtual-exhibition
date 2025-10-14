@@ -8,6 +8,7 @@ import type { HomePageProps } from "../models/PageProps"
 const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
     const [searchTerm, setSearchTerm] = useState("")
     const [artworksSearchTerm, setArtworksSearchTerm] = useState({})
+    const [showSearchResults, setShowSearchResults] = useState(false)
 
     const { data:artworksInfo, isLoading, error } = UseLoadingHook(searchArtworks, artworksSearchTerm)
 
@@ -17,13 +18,15 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
 
     return <>
         <h1>Home Page</h1>
-        <SearchQueryForm setSearchTerm={setSearchTerm}/>
-        {error?<h2>Results Not Found</h2>:<>
-            {isLoading? <h2>Loading...</h2>:<>
-                {!(Array.isArray(artworksInfo) && artworksInfo.length>0)? <p>No Results</p>:
-                <SearchResults artworksInfo={artworksInfo} />}
+        <SearchQueryForm setSearchTerm={setSearchTerm} setShowSearchResults={setShowSearchResults} />
+        {showSearchResults?<>
+            {error?<h2>Results Not Found</h2>:<>
+                {isLoading? <h2>Loading...</h2>:<>
+                    {!(Array.isArray(artworksInfo) && artworksInfo.length>0)? <p>No       Results</p>:
+                    <SearchResults artworksInfo={artworksInfo} exhibitions={exhibitions}   setExhibitions={setExhibitions}/>}
+                </>}
             </>}
-        </>}
+        </>:null}
     </>
 }
 
