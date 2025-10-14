@@ -15,6 +15,7 @@ const ArtworkInfoCard: React.FC<ArtworkInfoCardProps> = ({artwork, exhibitions, 
             'SIM': 'Science and Industry Museum, Manchester'
         }
         setReformattedArtwork({
+            id: artwork.id,
             title: CheckObjStructure(artwork, ['attributes','summary','title'])?artwork.attributes.summary.title:'',
             imageURL: CheckObjStructure(artwork, ['attributes','multimedia',0,'@processed','medium','location'])?'https://coimages.sciencemuseumgroup.org.uk/'+artwork.attributes.multimedia[0]['@processed'].medium.location:'',
             description: CheckObjStructure(artwork, ['attributes','description',0,'value'])?artwork.attributes.description[0].value:'',

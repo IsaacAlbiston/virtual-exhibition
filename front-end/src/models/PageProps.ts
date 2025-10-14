@@ -1,4 +1,4 @@
-import type { Exhibition } from "./Exhibitions"
+import type { Artwork, Exhibition } from "./Exhibitions"
 
 export interface HomePageProps {
     exhibitions: Exhibition[]
@@ -11,5 +11,9 @@ export interface NewExhibitionPageProps {
 }
 
 export interface ExhibitionsPageProps {
+    exhibitions: Exhibition[]
+}
+
+export interface ArtworkPageProps {
     exhibitions: Exhibition[]
 }

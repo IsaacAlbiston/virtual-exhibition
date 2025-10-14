@@ -4,6 +4,7 @@ export interface Exhibition {
 }
 
 export interface Artwork{
+    id: string
     title: string
     imageURL: string
     description: string
