@@ -6,6 +6,7 @@ import type { Artwork } from "../models/Exhibitions"
 
 const ArtworkInfoCard: React.FC<ArtworkInfoCardProps> = ({artwork, exhibitions, setExhibitions})=>{
     const [reformattedArtwork, setReformattedArtwork] = useState<Artwork>()
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
         const locationLookupObj = {
@@ -22,12 +23,17 @@ const ArtworkInfoCard: React.FC<ArtworkInfoCardProps> = ({artwork, exhibitions, 
             location: CheckObjStructure(artwork, ['attributes','category',0,'museum'])&&artwork.attributes.category[0].museum in locationLookupObj?locationLookupObj[artwork.attributes.category[0].museum]:'',
             websiteURL: CheckObjStructure(artwork, ['links','self'])?artwork.links.self:''
         })
+        setIsLoading(false)
     },[])
     return <>
+    {isLoading?
+    <p>Loading</p>:
+    <>
     <h2>{reformattedArtwork&&reformattedArtwork.title?reformattedArtwork.title:'title missing'}</h2>
     {reformattedArtwork&&reformattedArtwork.imageURL?<img src={reformattedArtwork.imageURL}/>:<p>No Image Found</p>}
     {reformattedArtwork&&reformattedArtwork.description?<p>{reformattedArtwork.description}</p>:<p>No Description Found</p>}
     {reformattedArtwork&&Array.isArray(exhibitions)&&exhibitions.length?<AddArtworkForm reformattedArtwork={reformattedArtwork} exhibitions={exhibitions} setExhibitions={setExhibitions} />:null}
+    </>}
     </>
 }
 
