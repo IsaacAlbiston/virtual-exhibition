@@ -1,14 +1,14 @@
 export interface artworksData {
     attributes: attributesModel
     id: string
-    links?: linksModel
+    links: linksModel
     relationships?: any
     type?: string
 }
 
 interface attributesModel {
     '@admin': any
-    category: any
+    category: categoryModel[]
     creation: any
     cumulation: any
     description: any
@@ -21,6 +21,13 @@ interface attributesModel {
     name: nameModel[]
     summary: summaryModel
     title: any
+}
+
+interface categoryModel{
+    museum: string
+    name: string
+    type: string
+    value: string
 }
 
 interface nameModel {

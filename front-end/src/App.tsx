@@ -7,6 +7,7 @@ import ExhibitionsPage from './pages/ExhibitionsPage'
 import ExhibitionPage from './pages/ExhibitionPage'
 import { useState } from 'react'
 import type { Exhibition } from './models/Exhibitions'
+import BadPathPage from './pages/BadPathPage'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Route path='/new-exhibition' element={<NewExhibitionPage exhibitions={exhibitions} setExhibitions={setExhibitions} />}/>
       <Route path='/exhibitions' element={<ExhibitionsPage exhibitions={exhibitions} />}/>
       <Route path='/exhibitions/:exhibitionIndex' element={<ExhibitionPage exhibitions={exhibitions} />} />
+      <Route path={'*'} element= {<BadPathPage/>} />
     </Routes>
     </>
   )

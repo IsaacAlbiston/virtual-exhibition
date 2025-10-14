@@ -5,4 +5,5 @@ export interface SearchInputProps {
 
 export interface SearchQueryFormProps {
     setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+    setShowSearchResults: React.Dispatch<React.SetStateAction<boolean>>
 }
