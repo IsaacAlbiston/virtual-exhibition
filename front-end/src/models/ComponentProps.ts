@@ -46,8 +46,18 @@ export interface ExhibitionInfoCardProps{
 
 export interface ArtworkListProps{
     artworks: Artwork[]
+    exhibitionIndex: number
 }
 
 export interface ExhibitionArtworkCardProps{
     artwork: Artwork
+    exhibitionIndex: number
+}
+
+export interface ArtworkPageInfoProps{
+    artwork: Artwork
+}
+
+export interface BackButtonProps{
+    previousPage: string
 }

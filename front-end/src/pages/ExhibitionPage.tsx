@@ -5,8 +5,12 @@ import type { ExhibitionsPageProps } from "../models/PageProps"
 const ExhibitionPage: React.FC<ExhibitionsPageProps> = ({exhibitions})=>{
     const {exhibitionIndex} = useParams()
     return <>
+    {!isNaN(Number(exhibitionIndex)) && exhibitionIndex>=0 && exhibitionIndex<exhibitions.length?
+    <>
     <h1>{exhibitions[exhibitionIndex].name}</h1>
-    {Number(exhibitionIndex)>=0?<ArtworkList artworks={exhibitions[exhibitionIndex].artworks}/>:null}
+    <ArtworkList exhibitionIndex={exhibitionIndex} artworks={exhibitions[exhibitionIndex].artworks}/>
+    </>
+    :<p>Exhibition Not Found</p>}
     </>
 }
 
