@@ -9,7 +9,7 @@ const UseLoadingHook = (dataFetchFunction:React.FC<searchParams>, searchTerm:sea
     useEffect(()=>{
         setIsLoading(true)
         console.log(searchTerm)
-        if (searchTerm.q !== '' && 'q' in searchTerm){
+        if (('q' in searchTerm && 'museum' in searchTerm && 'after' in searchTerm && 'before' in searchTerm)&&(searchTerm.q||searchTerm.museum||searchTerm.after||searchTerm.before)){
             dataFetchFunction(searchTerm)
             .then((responseData)=>{
                 setData(responseData)

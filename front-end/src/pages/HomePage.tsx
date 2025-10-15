@@ -6,21 +6,21 @@ import SearchResults from "../components/SearchResults"
 import type { HomePageProps } from "../models/PageProps"
 
 const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
-    const [searchTerm, setSearchTerm] = useState('')
-    const [artworksSearchTerm, setArtworksSearchTerm] = useState({})
+    const [currentFilters, setCurrentFilters] = useState({q:'',museum:'',after:'',before:''})
+    const [artworksSearchTerm, setArtworksSearchTerm] = useState({q:'',museum:'',after:'',before:''})
     const [showSearchResults, setShowSearchResults] = useState(false)
 
     const { data:artworksInfo, isLoading, error } = UseLoadingHook(searchArtworks, artworksSearchTerm)
 
     useEffect(()=>{
-        if (searchTerm!==''){
-            setArtworksSearchTerm({q:searchTerm})
+        if (currentFilters.q || currentFilters.museum || currentFilters.after || currentFilters.before){
+            setArtworksSearchTerm(currentFilters)
         }
-    },[searchTerm])
+    },[currentFilters])
 
     return <>
         <h1>Home Page</h1>
-        <SearchQueryForm setSearchTerm={setSearchTerm} setShowSearchResults={setShowSearchResults} />
+        <SearchQueryForm setCurrentFilters={setCurrentFilters} setShowSearchResults={setShowSearchResults} />
         {showSearchResults?<>
             {error?<h2>Results Not Found</h2>:<>
                 {isLoading? <h2>Loading...</h2>:<>

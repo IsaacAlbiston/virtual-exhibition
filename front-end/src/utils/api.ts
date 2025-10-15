@@ -6,8 +6,18 @@ const scienceMuseumGroupApi = axios.create({
   });
 scienceMuseumGroupApi.defaults.headers.common['Accept'] = 'application/json'
 
-export const searchArtworks: React.FC<searchParams> = (givenParams)=>{
-    return scienceMuseumGroupApi.get("/search/objects", {params:{...givenParams}})
+export const searchArtworks: React.FC<searchParams> = (searchFilters)=>{
+    let searchString = '/search/objects'
+    if (searchFilters.museum){
+        searchString = searchString+`/museum/${searchFilters.museum}`
+    }
+    if (searchFilters.after){
+        searchString = searchString+`/date[from]/${searchFilters.after}`
+    }
+    if (searchFilters.before){
+        searchString = searchString+`/date[to]/${searchFilters.before}`
+    }
+    return scienceMuseumGroupApi.get(searchString, {params:{q:searchFilters.q}})
     .then(res=>{
         return res.data.data
     })
