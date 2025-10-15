@@ -61,3 +61,14 @@ export interface ArtworkPageInfoProps{
 export interface BackButtonProps{
     previousPage: string
 }
+
+export interface MuseumDropdownProps{
+    inputMuseum: string
+    setInputMuseum: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface FormInputProps{
+    inputString: string
+    setInputString: React.Dispatch<React.SetStateAction<string>>
+    inputLabel: string
+}
