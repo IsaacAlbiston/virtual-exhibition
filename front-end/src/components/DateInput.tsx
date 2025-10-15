@@ -17,8 +17,10 @@ const DateInput: React.FC<FormInputProps> = ({inputString, setInputString, input
     }
 
     return<>
-    <label htmlFor={inputLabel}>{inputLabel}:</label>
-    <input onChange={updateInputSearchTerm} onBlur={validateInput} id={inputLabel} type="text" value={inputString}/>
+    <label className="text-nowrap font-serif" htmlFor={inputLabel}>{inputLabel}:</label>
+    <div className="px-2 w-full">
+    <input className="px-2 font-serif w-full rounded-lg" onChange={updateInputSearchTerm} onBlur={validateInput} id={inputLabel} type="text" value={inputString}/>
+    </div>
     {invalidInput?<p className="font-serif text-red-600 text-center" >Please enter a number</p>:null}
     </>
 }

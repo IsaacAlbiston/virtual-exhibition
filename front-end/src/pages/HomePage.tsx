@@ -18,8 +18,8 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
         }
     },[currentFilters])
 
-    return <>
-        <h1>Home Page</h1>
+    return <div>
+        <h1 className="p-4 text-3xl text-center font-serif">Home Page</h1>
         <SearchQueryForm setCurrentFilters={setCurrentFilters} setShowSearchResults={setShowSearchResults} />
         {showSearchResults?<>
             {error?<h2>Results Not Found</h2>:<>
@@ -29,7 +29,7 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
                 </>}
             </>}
         </>:null}
-    </>
+    </div>
 }
 
 export default HomePage
