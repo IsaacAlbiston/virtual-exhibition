@@ -5,9 +5,9 @@ const MuseumDropdown:React.FC<MuseumDropdownProps> = ({inputMuseum, setInputMuse
         setInputMuseum(event.target.value)
     }
 
-    return <div>
-    <label htmlFor="MuseumDropdown">Museum:</label>
-    <select id="MuseumDropdown" value={inputMuseum} onChange={updateDropdown}>
+    return <div className="py-2 flex">
+    <label className="pr-2 font-serif" htmlFor="MuseumDropdown">Museum:</label>
+    <select className="font-serif w-full rounded-lg" id="MuseumDropdown" value={inputMuseum} onChange={updateDropdown}>
         <option value=''>All</option>
         <option value='science-museum'>Science Museum</option>
         <option value='national-railway-museum'>National Railway Museum</option>

@@ -20,7 +20,8 @@ const ArtworkPage: React.FC<ArtworkPageProps> = ({exhibitions})=>{
         }
         setIsLoading(false)
     },[])
-    return <>
+    return <div className="rounded-lg p-4 bg-gray-200">
+                <div className="flex flex-col">
     {isLoading?
     <p>Loading</p>:
     <>
@@ -29,7 +30,8 @@ const ArtworkPage: React.FC<ArtworkPageProps> = ({exhibitions})=>{
         :<p>Artwork Not Found</p>}
         <BackButton previousPage={`/exhibitions/${exhibitionIndex}`}/>
     </>}
-    </>
+    </div>
+    </div>
 }
 
 export default ArtworkPage
