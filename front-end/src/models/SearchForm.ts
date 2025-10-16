@@ -1,4 +1,4 @@
-import type { searchParams } from "./ApiModels"
+import type { SearchParams } from "./ApiModels"
 
 export interface SearchInputProps {
     inputSearchTerm: string
@@ -6,6 +6,6 @@ export interface SearchInputProps {
 }
 
 export interface SearchQueryFormProps {
-    setCurrentFilters: React.Dispatch<React.SetStateAction<searchParams>>
+    setCurrentFilters: React.Dispatch<React.SetStateAction<SearchParams>>
     setShowSearchResults: React.Dispatch<React.SetStateAction<boolean>>
 }

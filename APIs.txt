@@ -6,3 +6,7 @@ search term string
 date before
 date after
 museum NRM, SMG, NMeM or MSI
+
+V&A 
+collections API
+https://developers.vam.ac.uk/guide/v2/welcome.html
