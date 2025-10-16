@@ -1,20 +1,19 @@
-import type { artworksData } from "./DataModels"
 import type { Artwork, Exhibition } from "./Exhibitions"
 
 export interface SearchResultsProps{
-    artworksInfo: artworksData[]
+    reformattedArtworks: Artwork[]
     exhibitions: Exhibition[]
     setExhibitions: React.Dispatch<React.SetStateAction<Exhibition[]>>
 }
 
 export interface ArtworkInfoCardProps{
-    artwork: artworksData
+    artwork: Artwork
     exhibitions: Exhibition[]
     setExhibitions: React.Dispatch<React.SetStateAction<Exhibition[]>>
 }
 
 export interface AddArtworkFormProps{
-    reformattedArtwork: Artwork
+    artwork: Artwork
     exhibitions: Exhibition[]
     setExhibitions: React.Dispatch<React.SetStateAction<Exhibition[]>>
 }
