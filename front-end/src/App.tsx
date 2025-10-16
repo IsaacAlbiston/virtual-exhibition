@@ -18,7 +18,7 @@ function App() {
     <>
     <NavBar/>
     <Routes>
-      <Route path='/' element={<HomePage exhibitions={exhibitions} setExhibitions={setExhibitions} />}/>
+      <Route path='/:pageNumber?' element={<HomePage exhibitions={exhibitions} setExhibitions={setExhibitions} />}/>
       <Route path='/new-exhibition' element={<NewExhibitionPage exhibitions={exhibitions} setExhibitions={setExhibitions} />}/>
       <Route path='/exhibitions' element={<ExhibitionsPage exhibitions={exhibitions} />}/>
       <Route path='/exhibitions/:exhibitionIndex' element={<ExhibitionPage exhibitions={exhibitions} />} />

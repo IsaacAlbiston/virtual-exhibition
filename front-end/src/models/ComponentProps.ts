@@ -1,6 +1,7 @@
 import type { Artwork, Exhibition } from "./Exhibitions"
 
 export interface SearchResultsProps{
+    totalResults: number
     reformattedArtworks: Artwork[]
     exhibitions: Exhibition[]
     setExhibitions: React.Dispatch<React.SetStateAction<Exhibition[]>>
@@ -70,4 +71,9 @@ export interface FormInputProps{
     inputString: string
     setInputString: React.Dispatch<React.SetStateAction<string>>
     inputLabel: string
+}
+
+export interface PageIndexParams {
+    totalResults: number
+    path: string
 }
