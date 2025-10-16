@@ -6,25 +6,38 @@ import type { HomePageProps } from "../models/PageProps"
 import type { Artwork } from "../models/Exhibitions"
 import type { ArtworksDataScienceMuseums, ArtworksDataVandA } from "../models/DataModels"
 import CheckObjStructure from "../utils/DataUtils"
+import { useNavigate, useParams } from "react-router"
 
 const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
+    const {pageNumber} = useParams()
+    const navigate = useNavigate()
     const [currentFilters, setCurrentFilters] = useState({q:'',museum:'',after:'',before:''})
-    const [artworksSearchTerm, setArtworksSearchTerm] = useState({q:'',museum:'',after:'',before:''})
+    const [artworksSearchTerm, setArtworksSearchTerm] = useState({pSize: '20', p:'',q:'',museum:'',after:'',before:''})
     const [showSearchResults, setShowSearchResults] = useState(false)
     const [formattingData, setFormattingData] = useState(true)
     const [reformattedArtworks, setReformattedArtworks] = useState<Artwork>()
     const [selectAPI, setSelectAPI] = useState("SMG")
 
-    const { data:artworksInfo, isLoading, error } = UseLoadingHook(selectAPI, artworksSearchTerm)
+    const { totalResults, data:artworksInfo, isLoading, error } = UseLoadingHook(selectAPI, artworksSearchTerm)
 
     useEffect(()=>{
         if (currentFilters.q || currentFilters.museum || currentFilters.after || currentFilters.before){
             if (currentFilters.museum==='v-and-a') setSelectAPI("VAM")
             else setSelectAPI("SMG")
             setFormattingData(true)
-            setArtworksSearchTerm(currentFilters)
+            setArtworksSearchTerm({pSize:'20', p:'1', ...currentFilters})
+            navigate('/1')
         }
     },[currentFilters])
+
+    useEffect(()=>{
+        if (currentFilters.q || currentFilters.museum || currentFilters.after || currentFilters.before){
+            if (currentFilters.museum==='v-and-a') setSelectAPI("VAM")
+            else setSelectAPI("SMG")
+            setFormattingData(true)
+            setArtworksSearchTerm({pSize:'20', p:String(pageNumber), ...currentFilters})
+        }
+    },[pageNumber])
 
     useEffect(()=>{
         const locationLookupObj = {
@@ -48,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
                     return {
                         id: artwork.systemNumber,
                         title: '_primaryTitle' in artwork?artwork._primaryTitle:'',
-                        imageURL: '_primaryImageId' in artwork?`https://framemark.vam.ac.uk/collections/${artwork._primaryImageId}/full/full/0/default.jpg`:'',
+                        imageURL: '_primaryImageId' in artwork && artwork._primaryImageId?`https://framemark.vam.ac.uk/collections/${artwork._primaryImageId}/full/full/0/default.jpg`:'',
                         description: 'objectType' in artwork && '_primaryPlace' in artwork?`${artwork.objectType} from ${artwork._primaryPlace}`:'',
                         location: artwork._currentLocation.onDisplay?artwork._currentLocation.displayName:'Not currently on display.',
                         websiteURL: `https://collections.vam.ac.uk/item/${artwork.systemNumber}`
@@ -66,8 +79,8 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
         {showSearchResults?<>
             {error?<h2>Results Not Found</h2>:<>
                 {isLoading||formattingData? <h2>Loading...</h2>:<>
-                    {!(Array.isArray(reformattedArtworks) && reformattedArtworks.length>0)? <p>No Results</p>:
-                    <SearchResults reformattedArtworks={reformattedArtworks} exhibitions={exhibitions}   setExhibitions={setExhibitions}/>}
+                    {!(Array.isArray(reformattedArtworks) && reformattedArtworks.length>0 && totalResults)? <p>No Results</p>:
+                    <SearchResults totalResults={totalResults} reformattedArtworks={reformattedArtworks} exhibitions={exhibitions}   setExhibitions={setExhibitions}/>}
                 </>}
             </>}
         </>:null}

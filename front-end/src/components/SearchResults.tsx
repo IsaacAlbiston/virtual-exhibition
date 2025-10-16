@@ -3,9 +3,9 @@ import type { SearchResultsProps } from "../models/ComponentProps"
 import PageIndex from "./PageIndex"
 import type { Artwork } from "../models/Exhibitions"
 
-const SearchResults: React.FC<SearchResultsProps> = ({reformattedArtworks, exhibitions, setExhibitions})=>{
+const SearchResults: React.FC<SearchResultsProps> = ({totalResults, reformattedArtworks, exhibitions, setExhibitions})=>{
     return <>
-    {/*<PageIndex itemsInfo={artworksInfo} path="/"/>*/}
+    <PageIndex totalResults={totalResults} path="/"/>
     <ol>
         {reformattedArtworks.map((artwork: Artwork) =>{
             return <li key={artwork.id} className="listItem" >
@@ -13,7 +13,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({reformattedArtworks, exhib
             </li>
         })}
     </ol>
-    {/*<PageIndex itemsInfo={artworksInfo} path="/"/>*/}
+    <PageIndex totalResults={totalResults} path="/"/>
     </>
 }
 

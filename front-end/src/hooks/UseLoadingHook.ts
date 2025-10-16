@@ -6,6 +6,7 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
     const [data, setData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [totalResults, setTotalResults] = useState(null)
 
     useEffect(()=>{
         setIsLoading(true)
@@ -13,25 +14,27 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
         if (('q' in searchTerm && 'museum' in searchTerm && 'after' in searchTerm && 'before' in searchTerm)&&(searchTerm.q||searchTerm.museum||searchTerm.after||searchTerm.before)){
             if (selectAPI==="SMG"){
                 searchArtworks(searchTerm)
-                .then((responseData)=>{
-                    setData(responseData)
+                .then((responseData:any)=>{
+                    setData(responseData.data)
+                    setTotalResults(responseData.meta.count.type.objects)
                     setIsLoading(false)
                     setError(null)
                     console.log(responseData)
                 })
-                .catch((err)=>{
+                .catch((err:any)=>{
                     setIsLoading(false)
                     setError(err)
                 })
             } else if (selectAPI==="VAM"){
                 searchArtworksVandA(searchTerm)
-                .then((responseData)=>{
-                    setData(responseData)
+                .then((responseData:any)=>{
+                    setData(responseData.records)
+                    setTotalResults(responseData.info.record_count)
                     setIsLoading(false)
                     setError(null)
                     console.log(responseData)
                 })
-                .catch((err)=>{
+                .catch((err:any)=>{
                     setIsLoading(false)
                     setError(err)
                 })
@@ -40,7 +43,7 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
 
     },[searchTerm, refreshTerm])
 
-    return { data, isLoading, error}
+    return { totalResults, data, isLoading, error}
 }
 
 export default UseLoadingHook
