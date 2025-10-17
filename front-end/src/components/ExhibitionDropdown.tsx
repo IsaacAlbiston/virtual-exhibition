@@ -20,9 +20,9 @@ const ExhibitionDropdown:React.FC<ExhibitionDropdownProps> = ({exhibitions, inpu
         return index
     }
 
-    return <div>
-    <label htmlFor="ExhibitionDropdown">Exhibition:</label>
-    <select id="SortByDropdown" value={inputExhibition} onChange={updateDropdown}>
+    return <div className="p-4 flex">
+    <label className="pr-2 font-serif" htmlFor="ExhibitionDropdown">Exhibition:</label>
+    <select className="font-serif w-full rounded-lg" id="SortByDropdown" value={inputExhibition} onChange={updateDropdown}>
         {exhibitions.map((exhibition: Exhibition) =>{
             return <option value={exhibition.name}>{exhibition.name}</option>
         })}

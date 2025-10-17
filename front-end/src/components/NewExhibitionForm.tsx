@@ -28,14 +28,22 @@ const NewExhibitionForm: React.FC<NewExhibitionFormProps> = ({setExhibitions})=>
         navigate('/')
     }
 
-    return <form onSubmit={searchQueryFormSubmit}>
-        <NameInput inputName={inputName} setInputName={setInputName}/>
-        {failedSubmit? <p className="font-serif text-red-600 text-center" >Please Enter A Name</p>:null }
-        <>
-        <button className="font-serif rounded-lg bg-white hover:bg-gray-200" > Submit </button>
-        <button onClick={cancelFormEntry} className="font-serif rounded-lg bg-white hover:bg-gray-200" > Cancel </button>
-        </>
-    </form>
+    return <div className="px-4">
+        <form onSubmit={searchQueryFormSubmit}>
+            <div className="rounded-lg p-4 bg-gray-200">
+                <div className="flex flex-col">
+                    <NameInput inputName={inputName} setInputName={setInputName}/>
+                    {failedSubmit? <p className="font-serif text-red-600 text-center" >Please Enter A Name</p>:null }
+                    <>
+                    <div className="py-4 flex justify-evenly">
+                        <button className="w-2/6 font-serif rounded-lg bg-white hover:bg-slate-400" > Submit </button>
+                        <button onClick={cancelFormEntry} className="w-2/6 font-serif rounded-lg bg-white hover:bg-slate-400" > Cancel </button>
+                    </div>
+                    </>
+                </div>
+            </div>
+        </form>
+    </div>
 }
 
 export default NewExhibitionForm

@@ -69,17 +69,17 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
                 }
             })
             setReformattedArtworks(newArtworks)
-            setFormattingData(false)
         }
+        setFormattingData(false)
     },[artworksInfo])
 
     return <div>
         <h1 className="p-4 text-3xl text-center font-serif">Home Page</h1>
         <SearchQueryForm setCurrentFilters={setCurrentFilters} setShowSearchResults={setShowSearchResults} />
         {showSearchResults?<>
-            {error?<h2>Results Not Found</h2>:<>
-                {isLoading||formattingData? <h2>Loading...</h2>:<>
-                    {!(Array.isArray(reformattedArtworks) && reformattedArtworks.length>0 && totalResults)? <p>No Results</p>:
+            {error?<h2 className="p-4 text-2xl text-center font-serif">Results Not Found</h2>:<>
+                {isLoading||formattingData? <h2 className="p-4 text-2xl text-center font-serif">Loading...</h2>:<>
+                    {!(Array.isArray(reformattedArtworks) && reformattedArtworks.length>0 && totalResults)? <p className="p-4 text-2xl text-center font-serif">No Results</p>:
                     <SearchResults totalResults={totalResults} reformattedArtworks={reformattedArtworks} exhibitions={exhibitions}   setExhibitions={setExhibitions}/>}
                 </>}
             </>}

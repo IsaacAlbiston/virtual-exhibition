@@ -10,7 +10,6 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
 
     useEffect(()=>{
         setIsLoading(true)
-        console.log(searchTerm)
         if (('q' in searchTerm && 'museum' in searchTerm && 'after' in searchTerm && 'before' in searchTerm)&&(searchTerm.q||searchTerm.museum||searchTerm.after||searchTerm.before)){
             if (selectAPI==="SMG"){
                 searchArtworks(searchTerm)
@@ -19,7 +18,6 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
                     setTotalResults(responseData.meta.count.type.objects)
                     setIsLoading(false)
                     setError(null)
-                    console.log(responseData)
                 })
                 .catch((err:any)=>{
                     setIsLoading(false)
@@ -32,7 +30,6 @@ const UseLoadingHook = (selectAPI:string, searchTerm:SearchParams, refreshTerm?:
                     setTotalResults(responseData.info.record_count)
                     setIsLoading(false)
                     setError(null)
-                    console.log(responseData)
                 })
                 .catch((err:any)=>{
                     setIsLoading(false)

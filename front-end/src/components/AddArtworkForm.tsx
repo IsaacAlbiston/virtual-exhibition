@@ -22,7 +22,7 @@ const AddArtworkForm:React.FC<AddArtworkFormProps> = ({artwork, exhibitions, set
         } else {setFailedSubmit(true)}
     }
 
-    const removeArtwork = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    const removeArtwork = ()=>{
         if (inputExhibition!==""){
             setExhibitions(current=>{
                 const newExhibitions: Exhibition[] = current.map((exhibition)=>{
@@ -45,13 +45,15 @@ const AddArtworkForm:React.FC<AddArtworkFormProps> = ({artwork, exhibitions, set
 
     return <form onSubmit={addArtworkToExhibition}>
         <ExhibitionDropdown exhibitions={exhibitions} inputExhibition={inputExhibition} setInputExhibition={setInputExhibition} setInputExhibitionIndex={setInputExhibitionIndex} />
+            <div className="pb-4 px-4 flex flex-col">
         {failedSubmit? <p className="font-serif text-red-600 text-center" >Please select an exhibition</p>:null }
         {isArtworkInExhibition(artwork,exhibitions[inputExhibitionIndex])?<>
-            <p>Added to exhibition</p>
-            <button onClick={removeArtwork} className="font-serif rounded-lg bg-white hover:bg-gray-200" > Remove Artwork </button>
+            <p className="pb-4 font-serif text-center">Added to exhibition</p>
+            <button onClick={removeArtwork} className="font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > Remove Artwork </button>
         </>:
-        <button className="font-serif rounded-lg bg-white hover:bg-gray-200" > Add Artwork </button>
+            <button className="font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > Add Artwork </button>
         }
+        </div>
     </form>
 }
 
