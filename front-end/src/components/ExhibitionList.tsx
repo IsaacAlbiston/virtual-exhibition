@@ -4,9 +4,9 @@ import ExhibitionInfoCard from "./ExhibitionInfoCard"
 
 const ExhibitionList: React.FC<ExhibitionListProps> = ({exhibitions})=>{
     return <>
-    <ol>
+    <ol className="rounded-lg m-4 bg-gray-200 sm:columns-2 lg:columns-3">
         {exhibitions.map((exhibition: Exhibition) =>{
-            return <li key={exhibition.name} className="listItem" >
+            return <li key={exhibition.name} className="break-inside-avoid-column" >
                 <ExhibitionInfoCard exhibition={exhibition} exhibitionIndex={exhibitions.indexOf(exhibition)} />
             </li>
         })}

@@ -3,34 +3,33 @@ import ArtworkPageInfo from "../components/ArtworkPageInfo"
 import type { ArtworkPageProps } from "../models/PageProps"
 import { useEffect, useState } from "react"
 import BackButton from "../components/BackButton"
+import type { Artwork } from "../models/Exhibitions"
 
 const ArtworkPage: React.FC<ArtworkPageProps> = ({exhibitions})=>{
     const {exhibitionIndex, artworkId} = useParams()
-    const [artworkInfo, setArtworkInfo] = useState({})
+    const [artworkInfo, setArtworkInfo] = useState<Artwork>({id:'',title:'',imageURL:'',description:'',location:'',websiteURL:''})
     const [isLoading, setIsLoading] = useState(true)
     useEffect(()=>{
-        let tempArtwork = {}
-        if (!isNaN(Number(exhibitionIndex)) && exhibitionIndex>=0 && exhibitionIndex<exhibitions.length){
-            exhibitions[exhibitionIndex].artworks.forEach((artwork)=>{
+        if (!isNaN(Number(exhibitionIndex)) && Number(exhibitionIndex)>=0 && Number(exhibitionIndex)<exhibitions.length){
+            exhibitions[Number(exhibitionIndex)].artworks.forEach((artwork)=>{
                 if (artwork.id===artworkId){
-                    tempArtwork = artwork
+                    setArtworkInfo(artwork)
                 }
             })
-            setArtworkInfo(tempArtwork)
         }
         setIsLoading(false)
     },[])
-    return <div className="rounded-lg p-4 bg-gray-200">
-                <div className="flex flex-col">
-    {isLoading?
-    <p>Loading</p>:
-    <>
-        {!isNaN(Number(exhibitionIndex)) && exhibitionIndex>=0 && exhibitionIndex<exhibitions.length && typeof artworkId==='string' &&  Object.keys(artworkInfo)?
-        <ArtworkPageInfo artwork={artworkInfo}/>
-        :<p>Artwork Not Found</p>}
-        <BackButton previousPage={`/exhibitions/${exhibitionIndex}`}/>
-    </>}
-    </div>
+    return <div className="p-4">
+        <div className="rounded-lg bg-gray-200">
+            <div className="divide-y-2 divide-solid divide-slate-500">
+                {isLoading?<p className="p-4 text-3xl text-center font-serif">Loading</p>:<>
+                    {!isNaN(Number(exhibitionIndex)) && Number(exhibitionIndex)>=0 && Number(exhibitionIndex)<exhibitions.length && typeof artworkId==='string' &&  Object.keys (artworkInfo)?
+                    <ArtworkPageInfo artwork={artworkInfo}/>
+                    :<p className="p-4 text-3xl text-center font-serif">Artwork Not Found</p>}
+                    <BackButton previousPage={`/exhibitions/${exhibitionIndex}`}/>
+                </>}
+            </div>
+        </div>
     </div>
 }
 

@@ -24,15 +24,14 @@ const PageIndex: React.FC<PageIndexParams> = ({totalResults, path})=>{
                     newPageArr.push(String(i))
                 }
             }
-            console.log(newPageArr)
             return newPageArr
         })
     },[totalResults, pageNumber])
 
-    return <div className="PageIndex">
+    return <div className="m-4 rounded-lg bg-gray-200 flex justify-evenly">
         {pageArr.map(page=>{
             return <>
-                {Number(page)!==Number(pageNumber)&&!isNaN(Number(page))?<Link to={`/${page}`}>{page}</Link>:
+                {Number(page)!==Number(pageNumber)&&!isNaN(Number(page))?<Link className="px-3 text-1xl underline text-blue-600 text-center font-serif rounded-lg hover:bg-gray-400" to={`/${page}`}>{page}</Link>:
                 <p>{page}</p>}
             </>
         })}
