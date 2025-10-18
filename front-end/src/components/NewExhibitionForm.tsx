@@ -30,7 +30,7 @@ const NewExhibitionForm: React.FC<NewExhibitionFormProps> = ({setExhibitions})=>
 
     return <div className="px-4">
         <form onSubmit={searchQueryFormSubmit}>
-            <div className="rounded-lg p-4 bg-gray-200">
+            <div className="rounded-lg p-4 bg-gray-300">
                 <div className="flex flex-col">
                     <NameInput inputName={inputName} setInputName={setInputName}/>
                     {failedSubmit? <p className="font-serif text-red-600 text-center" >Please Enter A Name</p>:null }
