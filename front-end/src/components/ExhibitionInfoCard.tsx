@@ -10,8 +10,8 @@ const ExhibitionInfoCard: React.FC<ExhibitionInfoCardProps> = ({exhibition, exhi
             <div className="flex flex-col">
                 <h2 className="pt-2 text-2xl text-center font-serif" >{exhibition.name}</h2>
                 <div className="py-4 flex justify-evenly">
-                    <button onClick={viewExhibition} className="w-2/5 font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > View Exhibition </button>
-                    <button onClick={addArtworks} className="w-2/5 font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > Add Artworks </button>
+                    <button onClick={viewExhibition} className="w-2/5 font-serif rounded-lg bg-gray-300 hover:bg-slate-400" > View Exhibition </button>
+                    <button onClick={addArtworks} className="w-2/5 font-serif rounded-lg bg-gray-300 hover:bg-slate-400" > Add Artworks </button>
                 </div>
             </div>
         </div>

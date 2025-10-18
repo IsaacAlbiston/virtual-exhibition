@@ -49,9 +49,9 @@ const AddArtworkForm:React.FC<AddArtworkFormProps> = ({artwork, exhibitions, set
         {failedSubmit? <p className="font-serif text-red-600 text-center" >Please select an exhibition</p>:null }
         {isArtworkInExhibition(artwork,exhibitions[inputExhibitionIndex])?<>
             <p className="pb-4 font-serif text-center">Added to exhibition</p>
-            <button onClick={removeArtwork} className="font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > Remove Artwork </button>
+            <button onClick={removeArtwork} className="font-serif rounded-lg bg-gray-300 hover:bg-slate-400" > Remove Artwork </button>
         </>:
-            <button className="font-serif rounded-lg bg-gray-200 hover:bg-slate-400" > Add Artwork </button>
+            <button className="font-serif rounded-lg bg-gray-300 hover:bg-slate-400" > Add Artwork </button>
         }
         </div>
     </form>

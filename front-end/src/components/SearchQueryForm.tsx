@@ -26,7 +26,7 @@ const SearchQueryForm: React.FC<SearchQueryFormProps> = ({setCurrentFilters,setS
     }
     return <div className="px-4">
         <form onSubmit={searchQueryFormSubmit}>
-            <div className="rounded-lg p-4 bg-gray-200">
+            <div className="rounded-lg p-4 bg-gray-300">
                 <div className="flex flex-col">
                     <SearchInput inputSearchTerm={inputSearchTerm} setInputSearchTerm={setInputSearchTerm}/>
                     <MuseumDropdown inputMuseum={inputMuseum} setInputMuseum={setInputMuseum} />
