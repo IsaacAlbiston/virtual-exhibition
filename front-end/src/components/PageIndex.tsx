@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router"
 import type { PageIndexParams } from "../models/ComponentProps"
 
-const PageIndex: React.FC<PageIndexParams> = ({totalResults, path})=>{
+const PageIndex: React.FC<PageIndexParams> = ({totalResults})=>{
     const [pageArr, setPageArr] = useState<string[]>([])
     const {pageNumber} = useParams()
 

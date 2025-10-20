@@ -46,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = ({exhibitions,setExhibitions})=>{
             'NRM': 'National Railway Museum, York',
             'SIM': 'Science and Industry Museum, Manchester'
         }
-        if (Array.isArray(artworksInfo) && artworksInfo.length>0){
+        if (Array.isArray(artworksInfo) && artworksInfo.length && artworksInfo.length>0){
             const newArtworks = artworksInfo.map((artwork: ArtworksDataScienceMuseums|ArtworksDataVandA) =>{
                 if ('id' in artwork){
                     return {
