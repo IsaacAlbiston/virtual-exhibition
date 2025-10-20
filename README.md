@@ -1,4 +1,6 @@
 # virtual-exhibition
+Hosted on:
+https://virtual-exhibtion-ia.netlify.app/
 
 This project is a website for creating virtual exhibitions from artworks/artefacts in museum databases. The current museum databases used are the Science Museum Group and the Victoria and Albert Museum collection.
 
