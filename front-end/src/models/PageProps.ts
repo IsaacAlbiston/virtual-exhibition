@@ -1,4 +1,4 @@
-import type { Artwork, Exhibition } from "./Exhibitions"
+import type { Exhibition } from "./Exhibitions"
 
 export interface HomePageProps {
     exhibitions: Exhibition[]
